@@ -24,6 +24,7 @@
   },
   "keywords": ["js-utils","ts-utils","utils-function","javascript-utils","javascript-functions"],
   "author": "laoer536 <1547698569@qq.com>",
+  "repository": "git@github.com:laoer536/js-utils.git",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.2",
