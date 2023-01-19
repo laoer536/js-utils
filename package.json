@@ -1,0 +1,42 @@
+{
+  "name": "js-utils",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint --ext .ts,.js . && prettier -c src test",
+    "prepack": "unbuild",
+    "release": "pnpm test && standard-version && git push --follow-tags && pnpm publish",
+    "test:dev": "vitest dev",
+    "test:res": "pnpm lint && vitest run --coverage"
+  },
+  "keywords": ["js-utils","ts-utils","utils-function","javascript-utils","javascript-functions"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "@vitest/coverage-c8": "^0.27.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.3",
+    "standard-version": "^9.5.0",
+    "typescript": "^4.9.4",
+    "unbuild": "^1.1.1",
+    "vite": "^4.0.4",
+    "vitest": "^0.27.2"
+  }
+}
