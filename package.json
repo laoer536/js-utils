@@ -23,7 +23,7 @@
     "test:res": "pnpm lint && vitest run --coverage"
   },
   "keywords": ["js-utils","ts-utils","utils-function","javascript-utils","javascript-functions"],
-  "author": "",
+  "author": "laoer536 <1547698569@qq.com>",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.2",
