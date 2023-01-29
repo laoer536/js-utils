@@ -22,7 +22,13 @@
     "test:dev": "vitest dev",
     "test:res": "pnpm lint && vitest run --coverage"
   },
-  "keywords": ["js-utils","ts-utils","utils-function","javascript-utils","javascript-functions"],
+  "keywords": [
+    "js-utils",
+    "ts-utils",
+    "utils-function",
+    "javascript-utils",
+    "javascript-functions"
+  ],
   "author": "laoer536 <1547698569@qq.com>",
   "repository": "git@github.com:laoer536/js-utils.git",
   "license": "MIT",
@@ -33,6 +39,7 @@
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "happy-dom": "^8.2.0",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",

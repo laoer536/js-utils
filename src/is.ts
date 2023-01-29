@@ -1,74 +1,88 @@
+import { useInClient } from './common'
+
+declare global {
+  interface Window {
+    __wxjs_is_wkwebview?: unknown
+  }
+}
+
 const toString = Object.prototype.toString
 
-export function is(val: unknown, type: string) {
+function is(
+  val: unknown,
+  type:
+    | 'Null'
+    | 'Undefined'
+    | 'String'
+    | 'Boolean'
+    | 'Number'
+    | 'Array'
+    | 'Function'
+    | 'BigInt'
+    | 'Object'
+    | 'Date'
+    | 'RegExp'
+    | 'Symbol'
+    | 'Promise'
+    | 'Window'
+) {
+  console.log(toString.call(val))
   return toString.call(val) === `[object ${type}]`
 }
 
-export function isDef(val: unknown) {
-  return typeof val !== 'undefined'
+function isDef(val: unknown) {
+  return typeof val === 'undefined'
 }
 
-export function isUnDef(val: unknown) {
+function isUnDef(val: unknown) {
   return !isDef(val)
 }
 
-export function isObject(val: unknown) {
+function isObject(val: unknown) {
   return val !== null && is(val, 'Object')
 }
 
-export function isDate(val: unknown) {
+function isDate(val: unknown) {
   return is(val, 'Date')
 }
 
-export function isNull(val: unknown) {
+function isNull(val: unknown) {
   return val === null
 }
 
-export function isNumber(val: unknown) {
+function isNumber(val: unknown) {
   return is(val, 'Number')
 }
 
-export function isString(val: unknown) {
+function isString(val: unknown) {
   return is(val, 'String')
 }
 
-export function isFunction(val: unknown) {
+function isFunction(val: unknown) {
   return typeof val === 'function'
 }
 
-export function isPromise(val: unknown) {
-  if (is(val, 'Promise') && val instanceof Promise) {
-    return isObject(val) && isFunction(val.then) && isFunction(val.catch)
+function isPromise(val: unknown) {
+  if (val instanceof Promise) {
+    return is(val, 'Promise') && isFunction(val.then) && isFunction(val.catch)
   } else {
     return false
   }
 }
 
-export function isBoolean(val: unknown) {
+function isBoolean(val: unknown) {
   return is(val, 'Boolean')
 }
 
-export function isRegExp(val: unknown) {
+function isRegExp(val: unknown) {
   return is(val, 'RegExp')
 }
 
-export function isArray(val: unknown) {
+function isArray(val: unknown) {
   return Boolean(val) && Array.isArray(val)
 }
 
-export function isWindow(val: unknown) {
-  return typeof window !== 'undefined' && is(val, 'Window')
-}
-
-export function isElement(val: unknown) {
-  if (val instanceof Element) {
-    return isObject(val) && !!val.tagName
-  } else {
-    return false
-  }
-}
-
-export function isEmpty(val: unknown) {
+function isEmpty(val: unknown) {
   if (isArray(val) || isString(val)) {
     return (val as Array<unknown> | string).length === 0
   }
@@ -80,68 +94,135 @@ export function isEmpty(val: unknown) {
   if (isObject(val)) {
     return Object.keys(val as object).length === 0
   }
-
   return false
 }
 
-export const isServer = typeof window === 'undefined'
+const isServer = typeof window === 'undefined'
 
-export const isClient = typeof window !== 'undefined'
+const isClient = typeof window !== 'undefined'
+function isWindow() {
+  return typeof window !== 'undefined' && is(window, 'Window')
+}
 
-export function isImageDom(o: Element) {
+function isElement(val: unknown) {
+  if (val instanceof Element) {
+    return !!val.tagName
+  } else {
+    return false
+  }
+}
+
+function isImageDom(o: Element) {
   return o && ['IMAGE', 'IMG'].includes(o.tagName)
 }
 
-export function isTextarea(element: Element) {
+function isTextarea(element: Element) {
   return element !== null && element.tagName.toLowerCase() === 'textarea'
 }
 
-export function isMobile() {
-  return !!navigator.userAgent.match(
+function isMobile() {
+  useInClient()
+  return !!navigator.userAgent?.match(
     // eslint-disable-next-line max-len
     /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
   )
 }
 
-export function isiOS() {
+function isiOS() {
+  useInClient()
   const u = navigator.userAgent
-   // ios终端
+  // ios终端
   return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
 }
 
-export function isAndroid() {
+function isAndroid() {
+  useInClient()
   const u = navigator.userAgent.toLowerCase()
   return u.includes('android') || u.includes('adr')
 }
 
-export function isWechat() {
+function isWechat() {
+  useInClient()
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('micromessenger')
 }
 
-export function isLine() {
+function isLine() {
+  useInClient()
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('line')
 }
 
-// export function isiOSWechat () {
-//   return Boolean(window.__wxjs_is_wkwebview)
-// }
+function isIOSWechat() {
+  useInClient()
+  return Boolean(window?.__wxjs_is_wkwebview)
+}
 
 // 判断是否在facebook内置浏览器
-export function isFacebook() {
+function isFacebook() {
+  useInClient()
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('facebookexternalhit')
 }
 
 // 判断是否在whatsapp内置浏览器
-export function isWhatsapp() {
+function isWhatsapp() {
+  useInClient()
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('whatsapp')
 }
 
 // 判断是否在twitter内置浏览器
-export function isTwitter() {
+function isTwitter() {
+  useInClient()
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('twitter')
+}
+
+function isMac() {
+  useInClient()
+  const ua = navigator.userAgent.toLowerCase()
+  console.log(ua)
+  return /Mac OS/i.test(ua)
+}
+
+function isWin() {
+  useInClient()
+  const ua = navigator.userAgent.toLowerCase()
+  console.log(ua)
+  return ua.indexOf('win64') > -1
+}
+
+export const isFns = {
+  is,
+  isDef,
+  isUnDef,
+  isObject,
+  isDate,
+  isNull,
+  isNumber,
+  isString,
+  isFunction,
+  isPromise,
+  isBoolean,
+  isRegExp,
+  isArray,
+  isEmpty,
+  isServer,
+  isClient,
+  isWindow,
+  isElement,
+  isImageDom,
+  isTextarea,
+  isMobile,
+  isiOS,
+  isAndroid,
+  isWechat,
+  isLine,
+  isIOSWechat,
+  isFacebook,
+  isWhatsapp,
+  isTwitter,
+  isMac,
+  isWin,
 }
