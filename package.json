@@ -1,6 +1,6 @@
 {
   "name": "js-utils-pro",
-  "version": "0.0.5",
+  "version": "0.0.2",
   "description": "",
   "type": "module",
   "private": false,
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "unbuild",
     "lint": "eslint --ext .ts,.js . && prettier -c src test",
-    "release": "pnpm test:res && standard-version && git push --follow-tags && pnpm publish",
+    "release": "pnpm test:res && standard-version && git push --follow-tags && pnpm publish --no-git-checks",
     "test:dev": "vitest dev",
     "test:res": "pnpm lint && vitest run --coverage"
   },
