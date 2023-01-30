@@ -1,8 +1,9 @@
 {
   "name": "js-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "type": "module",
+  "private": false,
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
