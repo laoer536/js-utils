@@ -85,7 +85,12 @@ describe('js-utils-isFns', () => {
   test('isEmpty test', () => {
     expect(isFns.isEmpty([])).eq(true)
     expect(isFns.isEmpty({})).eq(true)
-    expect(isFns.isEmpty('isEmpty test')).eq(false)
+    expect(isFns.isEmpty(new Map())).eq(true)
+    expect(isFns.isEmpty(new Set())).eq(true)
+    expect(isFns.isEmpty(['a'])).eq(false)
+    expect(isFns.isEmpty({ name: 'laoer536' })).eq(false)
+    expect(isFns.isEmpty(new Map([['key', 'value']]))).eq(false)
+    expect(isFns.isEmpty(new Set(['laoer536']))).eq(false)
   })
   test('isServer isClient test', () => {
     expect(isFns.isServer).eq(true)

@@ -25,8 +25,8 @@ function is(
     | 'Symbol'
     | 'Promise'
     | 'Window'
+    | 'global'
 ) {
-  console.log(toString.call(val))
   return toString.call(val) === `[object ${type}]`
 }
 
@@ -82,9 +82,9 @@ function isArray(val: unknown) {
   return Boolean(val) && Array.isArray(val)
 }
 
-function isEmpty(val: unknown) {
-  if (isArray(val) || isString(val)) {
-    return (val as Array<unknown> | string).length === 0
+function isEmpty(val: object | unknown[] | Set<unknown> | Map<unknown, unknown>) {
+  if (isArray(val)) {
+    return (val as unknown[]).length === 0
   }
 
   if (val instanceof Map || val instanceof Set) {
@@ -94,14 +94,13 @@ function isEmpty(val: unknown) {
   if (isObject(val)) {
     return Object.keys(val as object).length === 0
   }
-  return false
 }
 
 const isServer = typeof window === 'undefined'
 
 const isClient = typeof window !== 'undefined'
 function isWindow() {
-  return typeof window !== 'undefined' && is(window, 'Window')
+  return typeof window !== 'undefined' ? is(window, 'Window') || is(window, 'global') : false
 }
 
 function isElement(val: unknown) {
@@ -182,14 +181,12 @@ function isTwitter() {
 function isMac() {
   useInClient()
   const ua = navigator.userAgent.toLowerCase()
-  console.log(ua)
   return /Mac OS/i.test(ua)
 }
 
 function isWin() {
   useInClient()
   const ua = navigator.userAgent.toLowerCase()
-  console.log(ua)
   return ua.indexOf('win64') > -1
 }
 
