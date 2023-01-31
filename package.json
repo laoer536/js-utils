@@ -1,6 +1,6 @@
 {
   "name": "js-utils-pro",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "type": "module",
   "private": false,
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "unbuild",
     "lint": "eslint --ext .ts,.js . && prettier -c src test",
-    "release": "pnpm test:res && standard-version && git push --follow-tags && pnpm publish --no-git-checks",
+    "release": "pnpm test:res && pnpm build && standard-version && git push --follow-tags && pnpm publish --no-git-checks",
     "test:dev": "vitest dev",
     "test:res": "pnpm lint && vitest run --coverage"
   },
@@ -40,6 +40,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "happy-dom": "^8.2.0",
+    "js-utils-pro": "^0.0.8",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
