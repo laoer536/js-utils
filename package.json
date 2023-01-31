@@ -1,6 +1,6 @@
 {
   "name": "js-utils-pro",
-  "version": "0.0.8",
+  "version": "0.0.13",
   "description": "",
   "type": "module",
   "private": false,
@@ -8,17 +8,35 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./data": {
+      "import": "./dist/data.mjs",
+      "require": "./dist/data.cjs"
+    },
+    "./is": {
+      "import": "./dist/is.mjs",
+      "require": "./dist/is.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "is": [
+        "dist/is.d.ts"
+      ],
+      "data": [
+        "dist/data.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "unbuild",
     "lint": "eslint --ext .ts,.js . && prettier -c src test",
-    "release": "pnpm test:res && standard-version && git push --follow-tags && pnpm publish --no-git-checks",
+    "release": "pnpm test:res && pnpm build && standard-version && git push --follow-tags && pnpm publish --no-git-checks",
     "test:dev": "vitest dev",
     "test:res": "pnpm lint && vitest run --coverage"
   },

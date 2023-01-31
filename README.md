@@ -66,11 +66,26 @@ Add some useful utils to your project. No more 'ctrl C V'
 In code, you can
 
 ```typescript
+//way1
 import {isFns} from 'js-utils-pro'
+import {dataFns} from 'js-utils-pro'
 isFns.isEmpty([]) //true
 isFns.isNumber(222222) // true
+const target = { name: 'laoer536', obj: { age: 1111, sex: 1 } }
+const deepTarget = dataFns.deepClone(target)
 //...
 //Those methods are covered by test. They are safe and available.
+
+//way2:
+//when version >= 0.0.13 You also can
+import {isEmpty,isNumber} from 'js-utils-pro/is'
+import {deepClone} from 'js-utils-pro/data'
+isEmpty([]) //true
+isNumber(222222) // true
+const target = { name: 'laoer536', obj: { age: 1111, sex: 1 } }
+const deepTarget = deepClone(target)
+//...
+//Which way do we use? It's up to you. The 'way1' is categorized for easy memory and use. But I prefer to use 'way2', because it use 'import on demand' to get minimize size.
 ```
 
 ## Off Topic
