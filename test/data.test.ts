@@ -13,7 +13,7 @@ describe('js-utils-dataFns', () => {
     expect(target).toBe(target)
   })
 
-  test('deepCloneByStringfy', () => {
+  test('jsonToObject', () => {
     const targetStr = JSON.stringify({ name: 'laoer536', obj: { age: 1111, sex: 1 } })
     const arr = JSON.stringify([1, { age: 1111, sex: 1 }, 'ssss'])
     expect(dataFns.jsonToObject(arr, {})).toEqual([1, { age: 1111, sex: 1 }, 'ssss'])
