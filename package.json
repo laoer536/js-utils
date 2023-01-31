@@ -20,6 +20,16 @@
   },
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "is": [
+        "dist/is.d.ts"
+      ],
+      "data": [
+        "dist/data.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -48,7 +58,6 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "happy-dom": "^8.2.0",
-    "js-utils-pro": "^0.0.11",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
