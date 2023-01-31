@@ -37,6 +37,10 @@ Add some useful utils to your project. No more 'ctrl C V'
   isMac,
   isWin.
 
+- [x] dataFns
+
+  deepCloneByStringfy,deepClone,jsonToObject.
+  
 - [ ] Other(Waiting for exploration)
 
 ## How to use
