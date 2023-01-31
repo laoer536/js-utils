@@ -1,6 +1,6 @@
 {
   "name": "js-utils-pro",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "type": "module",
   "private": false,
@@ -40,7 +40,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "happy-dom": "^8.2.0",
-    "js-utils-pro": "^0.0.8",
+    "js-utils-pro": "^0.0.10",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
