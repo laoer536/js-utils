@@ -1,6 +1,6 @@
 {
   "name": "js-utils-pro",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "type": "module",
   "private": false,
@@ -8,6 +8,14 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./data": {
+      "import": "./dist/data.mjs",
+      "require": "./dist/data.cjs"
+    },
+    "./is": {
+      "import": "./dist/is.mjs",
+      "require": "./dist/is.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -40,7 +48,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "happy-dom": "^8.2.0",
-    "js-utils-pro": "^0.0.10",
+    "js-utils-pro": "^0.0.11",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
