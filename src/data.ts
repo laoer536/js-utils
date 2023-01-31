@@ -7,17 +7,19 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
 }
 
 /**
- * @description 'For complicated data, you use it is better.（Object who  includes object type data）'
+ * @description 'For complicated data, you use it is better.（Object who includes object type data）'
  * @param target
  */
 export function deepClone<T extends object>(target: T): T {
   const reData = Array.isArray(target) ? [] : {}
- for(const key in target){
-   reData[key] =
- }
-  return reData
+  let key: keyof typeof target
+  for (key in target) {
+    // @ts-ignore
+    reData[key] = typeof target[key] === 'object' ? deepClone(target[key]) : target[key]
+  }
+  return reData as T
 }
 
-export function jsonToObject(target: string, defV: unknown) {
+export function jsonToObject<T>(target: string, defV: unknown): T | typeof defV {
   return target ? JSON.parse(target) : defV
 }
