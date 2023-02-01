@@ -6,10 +6,6 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
   return target && JSON.parse(JSON.stringify(target))
 }
 
-function isDeepcloneObject(target: unknown): target is Record<string, any> {
-  return typeof target === 'object'
-}
-
 /**
  * @description 'For complicated data, you use it is better.（Object who includes object type data）'
  * @param target
