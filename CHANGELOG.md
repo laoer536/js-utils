@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/laoer536/js-utils/compare/v0.0.13...v0.0.14) (2023-02-01)
+
+
+### Bug Fixes
+
+* test ([7abc870](https://github.com/laoer536/js-utils/commit/7abc8702d9b01f2fcaeb308a939f686dc1502e52))
+* test ([a8295af](https://github.com/laoer536/js-utils/commit/a8295af3f14626ea8c11a44175aaaaea67cab7c4))
+* test name fix ([6710f3a](https://github.com/laoer536/js-utils/commit/6710f3a5ff7742b7edce8c1a1cbcbf375934226f))
+* test name fix ([8def0ff](https://github.com/laoer536/js-utils/commit/8def0ff53609807900845e180084cfdb9415918e))
+
+### [0.0.8](https://github.com/laoer536/js-utils/compare/v0.0.7...v0.0.8) (2023-01-31)
+
 ### [0.0.13](https://github.com/laoer536/js-utils/compare/v0.0.12...v0.0.13) (2023-01-31)
 
 
