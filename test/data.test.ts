@@ -1,7 +1,5 @@
 import { expect, test, describe } from 'vitest'
 import { dataFns } from '../src'
-import { getLengthArr, getRandomArr } from '../src/data'
-
 describe('js-utils-dataFns', () => {
   test('deepCloneByStringfy', () => {
     const target = { name: 'laoer536', obj: { age: 1111, sex: 1 } }
