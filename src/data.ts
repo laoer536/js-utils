@@ -10,14 +10,13 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
  * @description 'For complicated data, you use it is better.（Object who includes object type data）'
  * @param target
  */
-export function deepClone<T = any>(target: T): T {
+export function deepClone<T extends Record<string, any>>(target: T): T {
   if (typeof target === 'object') {
-    const reData: any = Array.isArray(target) ? [] : {}
-    let key: keyof typeof target
-    for (key in target) {
+    const reData = (Array.isArray(target) ? [] : {}) as T
+    for (const key in target) {
       reData[key] = typeof target?.[key] === 'object' ? deepClone(target[key]) : target?.[key]
     }
-    return reData as T
+    return reData
   } else {
     throw 'Target must be object'
   }
