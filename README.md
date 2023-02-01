@@ -39,7 +39,7 @@ Add some useful utils to your project. No more 'ctrl C V'
 
 - [x] dataFns
 
-  deepCloneByStringfy,deepClone,jsonToObject.
+  deepCloneByStringfy,deepClone,jsonToObject,getRandomNumber,getRandomOneInArr,getRandomArr,getMapkeyedObj,getLengthArr.
   
 - [ ] Other(Waiting for exploration)
 
