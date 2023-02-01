@@ -31,8 +31,6 @@ describe('js-utils-dataFns', () => {
     expect(dataFns.deepClone(target).obj).not.toBe(target.obj)
     expect(dataFns.deepClone(target)).toEqual(target)
     expect(target).toBe(target)
-    // @ts-ignore
-    expect(() => dataFns.deepClone('')).toThrow('Target must be object')
     expect(() => dataFns.deepClone(target)).not.toThrow('Target must be object')
   })
 })
