@@ -1,5 +1,6 @@
 import { expect, test, describe } from 'vitest'
 import { dataFns } from '../src'
+import { getLengthArr, getRandomArr } from '../src/data'
 
 describe('js-utils-dataFns', () => {
   test('deepCloneByStringfy', () => {
@@ -33,5 +34,39 @@ describe('js-utils-dataFns', () => {
     expect(target).toBe(target)
     expect(() => dataFns.deepClone('')).toThrow('Target must be object')
     expect(() => dataFns.deepClone(target)).not.toThrow('Target must be object')
+  })
+
+  test('getRandomNumber', () => {
+    expect(dataFns.getRandomNumber(0, 0)).toEqual(0)
+    const res = dataFns.getRandomNumber(-20, 20)
+    expect(res >= -20 && res <= 20).toEqual(true)
+  })
+
+  test('getRandomOneInArr', () => {
+    const arr = [1, 2, 3, 4, 6, 7, 8, 9, 10]
+    expect(arr.includes(dataFns.getRandomOneInArr(arr))).toEqual(true)
+  })
+
+  test('getRandomArr', () => {
+    const arr = [1, 2, 3, 4, 6, 7, 8, 9, 10]
+    expect(dataFns.getRandomArr(arr).every((value) => arr.includes(value))).toEqual(true)
+    expect(dataFns.getRandomArr(arr)).not.toBe(arr)
+  })
+
+  test('getMapkeyedObj', () => {
+    const obj = { name: 'laoer536', age: 12, other: 'ssss' }
+    const resObjReplace = { label: 'laoer536', value: 12, other: 'ssss' }
+    const resObjNotReplace = { name: 'laoer536', age: 12, label: 'laoer536', value: 12, other: 'ssss' }
+    expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'])).toEqual(resObjNotReplace)
+    expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'], false)).toEqual(resObjNotReplace)
+    expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'], true)).toEqual(resObjReplace)
+    expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'])).not.toBe(obj)
+  })
+
+  test('getLengthArr', () => {
+    expect(dataFns.getLengthArr(50).length).toEqual(50)
+    expect(Array.isArray(dataFns.getLengthArr(50))).toEqual(true)
+    expect(dataFns.getLengthArr(50, () => 1).every((value) => value === 1)).toEqual(true)
+    expect(dataFns.getLengthArr(50).every((value) => value === undefined)).toEqual(true)
   })
 })
