@@ -45,6 +45,7 @@ describe('js-utils-dataFns', () => {
   test('getRandomOneInArr', () => {
     const arr = [1, 2, 3, 4, 6, 7, 8, 9, 10]
     expect(arr.includes(dataFns.getRandomOneInArr(arr))).toEqual(true)
+    expect(() => dataFns.getRandomOneInArr([])).toThrow('Array has at least one element')
   })
 
   test('getRandomArr', () => {
@@ -61,6 +62,9 @@ describe('js-utils-dataFns', () => {
     expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'], false)).toEqual(resObjNotReplace)
     expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'], true)).toEqual(resObjReplace)
     expect(dataFns.getMapkeyedObj(obj, ['name-label', 'age-value'])).not.toBe(obj)
+    expect(() => dataFns.getMapkeyedObj(obj, ['sex-label', 'age-value'])).toThrow(
+      `Can't find 'sex' key in origin target.`
+    )
   })
 
   test('getLengthArr', () => {
