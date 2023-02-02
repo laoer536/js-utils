@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/laoer536/js-utils/compare/v0.0.14...v0.0.15) (2023-02-02)
+
+
+### Features
+
+* stringFns add 'snakeCase,camelCase,kebabCase,pascalCase,splitByCase,lowerFirst,upperFirst' ([f3c7d22](https://github.com/laoer536/js-utils/commit/f3c7d22db4b962ba3b8e37251a6633c795ef910c))
+* stringFns add 'snakeCase,camelCase,kebabCase,pascalCase,splitByCase,lowerFirst,upperFirst' ([98f62d7](https://github.com/laoer536/js-utils/commit/98f62d7d58090437d4ad8e4f80b69e25dc729c6d))
+
 ### [0.0.14](https://github.com/laoer536/js-utils/compare/v0.0.13...v0.0.14) (2023-02-01)
 
 
