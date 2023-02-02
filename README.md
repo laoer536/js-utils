@@ -37,13 +37,19 @@ Add some useful utils to your project. No more 'ctrl C V'
   isMac,
   isWin.
 
+  > See use code at [js-utils/isFunctions.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/isFunctions.test.ts) && [js-utils/isFunctions.client.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/isFunctions.client.test.ts) 
+
 - [x] dataFns
 
   deepCloneByStringfy,deepClone,jsonToObject,getRandomNumber,getRandomOneInArr,getRandomArr,getMapkeyedObj,getLengthArr.
   
+  > See use code at [js-utils/data.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/data.test.ts)
+  
 - [x] stringFns
 
   snakeCase,camelCase,kebabCase,pascalCase,splitByCase,lowerFirst,upperFirst.
+  
+  > See use code at [js-utils/string.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/string.test.ts)
   
 - [ ] Other(Waiting for exploration)
 
