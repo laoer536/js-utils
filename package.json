@@ -16,6 +16,10 @@
     "./is": {
       "import": "./dist/is.mjs",
       "require": "./dist/is.cjs"
+    },
+    "./string": {
+      "import": "./dist/string.mjs",
+      "require": "./dist/string.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -27,6 +31,9 @@
       ],
       "data": [
         "dist/data.d.ts"
+      ],
+      "string": [
+        "dist/string.d.ts"
       ]
     }
   },
@@ -64,5 +71,8 @@
     "unbuild": "^1.1.1",
     "vite": "^4.0.4",
     "vitest": "^0.27.2"
+  },
+  "dependencies": {
+    "scule": "^1.0.0"
   }
 }
