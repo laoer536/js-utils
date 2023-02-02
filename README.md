@@ -41,6 +41,10 @@ Add some useful utils to your project. No more 'ctrl C V'
 
   deepCloneByStringfy,deepClone,jsonToObject,getRandomNumber,getRandomOneInArr,getRandomArr,getMapkeyedObj,getLengthArr.
   
+- [x] stringFns
+
+  snakeCase,camelCase,kebabCase,pascalCase,splitByCase,lowerFirst,upperFirst.
+  
 - [ ] Other(Waiting for exploration)
 
 ## How to use

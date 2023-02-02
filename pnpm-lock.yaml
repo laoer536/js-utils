@@ -9,11 +9,15 @@ specifiers:
   eslint-plugin-prettier: ^4.2.1
   happy-dom: ^8.2.0
   prettier: ^2.8.3
+  scule: ^1.0.0
   standard-version: ^9.5.0
   typescript: ^4.9.4
   unbuild: ^1.1.1
   vite: ^4.0.4
   vitest: ^0.27.2
+
+dependencies:
+  scule: 1.0.0
 
 devDependencies:
   '@typescript-eslint/eslint-plugin': 5.48.2_caon6io6stgpr7lz2rtbhekxqy
@@ -2799,7 +2803,6 @@ packages:
 
   /scule/1.0.0:
     resolution: {integrity: sha512-4AsO/FrViE/iDNEPaAQlb77tf0csuq27EsVpy6ett584EcRTp6pTDLoGWVxCD77y5iU5FauOvhsI4o1APwPoSQ==}
-    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
