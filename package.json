@@ -20,6 +20,10 @@
     "./string": {
       "import": "./dist/string.mjs",
       "require": "./dist/string.cjs"
+    },
+    "./dom": {
+      "import": "./dist/dom.mjs",
+      "require": "./dist/dom.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -34,6 +38,9 @@
       ],
       "string": [
         "dist/string.d.ts"
+      ],
+      "dom": [
+        "dist/dom.d.ts"
       ]
     }
   },

@@ -51,6 +51,12 @@ Add some useful utils to your project. No more 'ctrl C V'
   
   > See use code at [js-utils/string.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/string.test.ts)
   
+- [x] domFns
+
+  getUrlSearchParams,intersectionObserverElement,downloadFile,playAudio,fastCopy.
+  
+  > See use code at [js-utils/dom.test.ts at main · laoer536/js-utils (github.com)](https://github.com/laoer536/js-utils/blob/main/test/dom.test.ts)
+  
 - [ ] Other(Waiting for exploration)
 
 ## How to use
