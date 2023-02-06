@@ -1,7 +1,7 @@
 {
   "name": "js-utils-pro",
   "version": "0.0.13",
-  "description": "",
+  "description": "Add some useful utils to your project. No more 'ctrl C V'.",
   "type": "module",
   "private": false,
   "exports": {
