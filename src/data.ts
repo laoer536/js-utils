@@ -84,5 +84,5 @@ export function getMapkeyedObj<T>(target: { [key: string]: any }, mapKeys: strin
  */
 // eslint-disable-next-line no-unused-vars
 export function getLengthArr<T = undefined>(length: number, callback?: (index?: number) => T): T[] {
-  return callback ? Array.from(Array(length)).map((value, index) => callback(index)) : Array.from(Array(length))
+  return callback ? Array.from(Array(length), (value, index) => callback(index)) : Array.from(Array(length))
 }
