@@ -69,19 +69,15 @@ export function downloadFile(data: DownloadFileP) {
     throw "You must select one between 'file' and 'fileUrl' as incoming parameters"
   } else if (fileUrl) {
     a.href = fileUrl
-    document.body.appendChild(a)
-    a.click()
-    URL.revokeObjectURL(a.href)
-    document.body.removeChild(a)
   } else if (file) {
     a.href = URL.createObjectURL(file)
-    document.body.appendChild(a)
-    a.click()
-    URL.revokeObjectURL(a.href)
-    document.body.removeChild(a)
   } else {
     throw 'Can not find the file data.'
   }
+  document.body.appendChild(a)
+  a.click()
+  URL.revokeObjectURL(a.href)
+  document.body.removeChild(a)
 }
 
 /**
