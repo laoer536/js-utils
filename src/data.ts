@@ -24,7 +24,7 @@ export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap(
   if (hash.has(obj)) {
     return hash.get(obj)
   }
-  let allDesc = Object.getOwnPropertyDescriptors(obj)
+  const allDesc = Object.getOwnPropertyDescriptors(obj)
   const cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
   hash.set(obj, cloneObj)
   for (const key of Reflect.ownKeys(obj)) {
