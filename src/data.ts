@@ -25,13 +25,8 @@ export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap(
     return hash.get(obj)
   }
   let allDesc = Object.getOwnPropertyDescriptors(obj)
-
-  //遍历传入参数所有键的特性
   let cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
-
-  // 把cloneObj原型复制到obj上
   hash.set(obj, cloneObj)
-
   for (let key of Reflect.ownKeys(obj)) {
     cloneObj[key] = isComplexDataType(obj[key]) && typeof obj[key] !== 'function' ? deepClone(obj[key], hash) : obj[key]
   }
