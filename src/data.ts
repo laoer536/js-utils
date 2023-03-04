@@ -25,9 +25,9 @@ export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap(
     return hash.get(obj)
   }
   let allDesc = Object.getOwnPropertyDescriptors(obj)
-  let cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
+  const cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
   hash.set(obj, cloneObj)
-  for (let key of Reflect.ownKeys(obj)) {
+  for (const key of Reflect.ownKeys(obj)) {
     cloneObj[key] = isComplexDataType(obj[key]) && typeof obj[key] !== 'function' ? deepClone(obj[key], hash) : obj[key]
   }
   return cloneObj
