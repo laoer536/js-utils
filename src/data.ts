@@ -13,7 +13,7 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
  */
 
 export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap()) {
-  const isComplexDataType = (obj: Record<string, any>) =>
+  const isComplexDataType = (obj: Record<string | symbol, any>) =>
     (typeof obj === 'object' || typeof obj === 'function') && obj !== null
   if (obj.constructor === Date) {
     return new Date(obj)
