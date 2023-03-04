@@ -8,18 +8,34 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
 
 /**
  * @description 'For complicated data, you use it is better.（Object who includes object type data）'
- * @param target
+ * @param obj
+ * @param hash
  */
-export function deepClone<T extends Record<string, any>>(target: T): T {
-  if (typeof target === 'object') {
-    const reData = (Array.isArray(target) ? [] : {}) as T
-    for (const key in target) {
-      reData[key] = typeof target?.[key] === 'object' ? deepClone(target[key]) : target?.[key]
-    }
-    return reData
-  } else {
-    throw 'Target must be object'
+
+export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap()) {
+  const isComplexDataType = (obj: Record<string, any>) =>
+    (typeof obj === 'object' || typeof obj === 'function') && obj !== null
+  if (obj.constructor === Date) {
+    return new Date(obj)
   }
+  if (obj.constructor === RegExp) {
+    return new RegExp(obj)
+  }
+  if (hash.has(obj)) {
+    return hash.get(obj)
+  }
+  let allDesc = Object.getOwnPropertyDescriptors(obj)
+
+  //遍历传入参数所有键的特性
+  let cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
+
+  // 把cloneObj原型复制到obj上
+  hash.set(obj, cloneObj)
+
+  for (let key of Reflect.ownKeys(obj)) {
+    cloneObj[key] = isComplexDataType(obj[key]) && typeof obj[key] !== 'function' ? deepClone(obj[key], hash) : obj[key]
+  }
+  return cloneObj
 }
 
 export function jsonToObject<T>(target: string, defV: unknown): T | typeof defV {
