@@ -6,44 +6,34 @@
   "private": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
     "./data": {
+      "types": "./dist/data.d.ts",
       "import": "./dist/data.mjs",
       "require": "./dist/data.cjs"
     },
     "./is": {
+      "types": "./dist/is.d.ts",
       "import": "./dist/is.mjs",
       "require": "./dist/is.cjs"
     },
     "./string": {
+      "types": "./dist/string.d.ts",
       "import": "./dist/string.mjs",
       "require": "./dist/string.cjs"
     },
     "./dom": {
+      "types": "./dist/dom.d.ts",
       "import": "./dist/dom.mjs",
       "require": "./dist/dom.cjs"
     }
   },
   "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "is": [
-        "dist/is.d.ts"
-      ],
-      "data": [
-        "dist/data.d.ts"
-      ],
-      "string": [
-        "dist/string.d.ts"
-      ],
-      "dom": [
-        "dist/dom.d.ts"
-      ]
-    }
-  },
   "files": [
     "dist"
   ],
