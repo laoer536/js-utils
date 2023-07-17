@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://github.com/laoer536/js-utils/compare/v0.0.19...v0.0.20) (2023-07-17)
+
+
+### Features
+
+* fastCopy add preserveFormatting ([9bdbb14](https://github.com/laoer536/js-utils/commit/9bdbb1452d1b282a059b091a1316d9a4e0d4f5c1))
+
 ### [0.0.19](https://github.com/laoer536/js-utils/compare/v0.0.18...v0.0.19) (2023-05-17)
 
 
