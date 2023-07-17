@@ -2,7 +2,7 @@
  * @description Parsing the parameters attached to the url as objects.
  * @param url
  */
-export function getUrlSearchParams(url: string) {
+export function getUrlSearchParams(url = location.href) {
   const urlP = new URL(url)
   return Object.fromEntries(new URLSearchParams(urlP.search))
 }
