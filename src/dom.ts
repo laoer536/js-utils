@@ -105,9 +105,11 @@ export function playAudio(audioUrl: string): Promise<AudioBufferSourceNode> {
 /**
  * @description One-click copy.
  * @param text
+ * @param preserveFormatting
  */
-export function fastCopy(text: string) {
-  const input = document.createElement('input')
+export function fastCopy(text: string, preserveFormatting = false) {
+  const element = preserveFormatting ? 'textarea' : 'input'
+  const input = document.createElement(element)
   input.value = text
   input.setAttribute('readOnly', 'true')
   document.body.appendChild(input)
