@@ -97,3 +97,19 @@ export function getMapkeyedObj<T>(target: { [key: string]: any }, mapKeys: strin
 export function getLengthArr<T = undefined>(length: number, callback?: (index?: number) => T): T[] {
   return callback ? Array.from(Array(length), (value, index) => callback(index)) : Array.from(Array(length))
 }
+
+/**
+ * @description Prefer RFC 5897 to make the download result the same as the URL directly through the A tag.
+ * @param contentDisposition
+ */
+export function analysisFilename(contentDisposition: string): string {
+  let regex = /filename\*=\S+?''(.+?)(;|$)/
+  if (regex.test(contentDisposition)) {
+    return RegExp.$1
+  }
+  regex = /filename="{0,1}([\S\s]+?)"{0,1}(;|$)/
+  if (regex.test(contentDisposition)) {
+    return RegExp.$1
+  }
+  return 'File name get exception.'
+}
