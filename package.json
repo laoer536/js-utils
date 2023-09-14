@@ -29,6 +29,11 @@
       "types": "./dist/dom.d.ts",
       "import": "./dist/dom.mjs",
       "require": "./dist/dom.cjs"
+    },
+    "./behavior": {
+      "types": "./dist/behavior.d.ts",
+      "import": "./dist/behavior.mjs",
+      "require": "./dist/behavior.cjs"
     }
   },
   "main": "./dist/index.cjs",
