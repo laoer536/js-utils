@@ -1,7 +1,6 @@
 import { isMobile } from './is'
 
-// eslint-disable-next-line @typescript-eslint/ban-types,no-unused-vars
-export function dbclick(e: HTMLElement, fn: (e?: any) => void) {
+export function dbClick(element: HTMLElement, fn: (e?: any) => void) {
   let timeout: ReturnType<typeof setTimeout> | null
   const controller = new AbortController()
   const signal = controller.signal
@@ -9,9 +8,9 @@ export function dbclick(e: HTMLElement, fn: (e?: any) => void) {
     controller.abort()
   }
   if (!isMobile() && 'ondblclick' in window) {
-    e.addEventListener('dblclick', fn, { signal })
+    element.addEventListener('dblclick', fn, { signal })
   } else {
-    e.addEventListener(
+    element.addEventListener(
       'click',
       (e) => {
         if (timeout) {
@@ -28,5 +27,33 @@ export function dbclick(e: HTMLElement, fn: (e?: any) => void) {
       { signal }
     )
   }
+  return { removeListener }
+}
+
+export function longPress(element: HTMLElement, fn: (e?: any) => void) {
+  let timeout: ReturnType<typeof setTimeout> | null
+  const controller = new AbortController()
+  const signal = controller.signal
+  const removeListener = () => {
+    controller.abort()
+  }
+  element.addEventListener(
+    'mouseup',
+    () => {
+      timeout && clearTimeout(timeout)
+    },
+    { signal }
+  )
+  element.addEventListener(
+    'mousedown',
+    (e) => {
+      timeout = setTimeout(() => {
+        timeout && clearTimeout(timeout)
+        timeout = null
+        fn(e)
+      }, 200)
+    },
+    { signal }
+  )
   return { removeListener }
 }
