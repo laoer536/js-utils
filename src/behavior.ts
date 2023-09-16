@@ -41,6 +41,7 @@ export function longPress(element: HTMLElement, fn: (e?: any) => void) {
     'mouseup',
     () => {
       timeout && clearTimeout(timeout)
+      timeout = null
     },
     { signal }
   )
