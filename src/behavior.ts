@@ -1,4 +1,5 @@
 import { isMobile } from './is'
+import { clearTheTimeout } from './common'
 
 export function dbClick(element: HTMLElement, fn: (e?: any) => void) {
   let timeout: ReturnType<typeof setTimeout> | null
@@ -15,12 +16,10 @@ export function dbClick(element: HTMLElement, fn: (e?: any) => void) {
       (e) => {
         if (timeout) {
           fn(e)
-          clearTimeout(timeout)
-          timeout = null
+          clearTheTimeout(timeout)
         } else {
           timeout = setTimeout(() => {
-            clearTimeout(timeout as ReturnType<typeof setTimeout>)
-            timeout = null
+            clearTheTimeout(timeout)
           }, 200)
         }
       },
@@ -40,8 +39,7 @@ export function longPress(element: HTMLElement, fn: (e?: any) => void) {
   element.addEventListener(
     'mouseup',
     () => {
-      timeout && clearTimeout(timeout)
-      timeout = null
+      clearTheTimeout(timeout)
     },
     { signal }
   )
@@ -49,8 +47,7 @@ export function longPress(element: HTMLElement, fn: (e?: any) => void) {
     'mousedown',
     (e) => {
       timeout = setTimeout(() => {
-        timeout && clearTimeout(timeout)
-        timeout = null
+        clearTheTimeout(timeout)
         fn(e)
       }, 200)
     },
