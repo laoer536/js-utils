@@ -96,7 +96,7 @@ export function moveDirectionH5(element: HTMLElement, moveDirectionH5Fn: MoveDir
       } else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
         toTop && toTop(e)
       } else {
-        console.log('滑了个寂寞')
+        console.log('Failed to detect the sliding behavior in what direction。')
       }
     },
     { signal }
