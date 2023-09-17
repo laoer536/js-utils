@@ -1,7 +1,6 @@
 import { isMobile } from './is'
-import { clearTheTimeout } from './common'
 
-export function dbClick(element: HTMLElement, fn: (e?: MouseEvent) => void) {
+export function dbClick(element: HTMLElement, fn: (e?: MouseEvent) => void, needPreventDefault = true) {
   let timeout: ReturnType<typeof setTimeout> | null
   const controller = new AbortController()
   const signal = controller.signal
@@ -9,17 +8,27 @@ export function dbClick(element: HTMLElement, fn: (e?: MouseEvent) => void) {
     controller.abort()
   }
   if (!isMobile() && 'ondblclick' in window) {
-    element.addEventListener('dblclick', fn, { signal })
+    element.addEventListener(
+      'dblclick',
+      (e) => {
+        needPreventDefault && e.preventDefault()
+        fn(e)
+      },
+      { signal }
+    )
   } else {
     element.addEventListener(
       'click',
       (e) => {
+        needPreventDefault && e.preventDefault()
         if (timeout) {
           fn(e)
-          clearTheTimeout(timeout)
+          timeout && clearTimeout(timeout)
+          timeout = null
         } else {
           timeout = setTimeout(() => {
-            clearTheTimeout(timeout)
+            timeout && clearTimeout(timeout)
+            timeout = null
           }, 200)
         }
       },
@@ -29,7 +38,7 @@ export function dbClick(element: HTMLElement, fn: (e?: MouseEvent) => void) {
   return { removeListener }
 }
 
-export function longPress(element: HTMLElement, fn: (e?: MouseEvent) => void) {
+export function longPress(element: HTMLElement, fn: (e?: MouseEvent) => void, needPreventDefault = true) {
   let timeout: ReturnType<typeof setTimeout> | null
   const controller = new AbortController()
   const signal = controller.signal
@@ -38,16 +47,20 @@ export function longPress(element: HTMLElement, fn: (e?: MouseEvent) => void) {
   }
   element.addEventListener(
     'mouseup',
-    () => {
-      clearTheTimeout(timeout)
+    (e) => {
+      needPreventDefault && e.preventDefault()
+      timeout && clearTimeout(timeout)
+      timeout = null
     },
     { signal }
   )
   element.addEventListener(
     'mousedown',
     (e) => {
+      needPreventDefault && e.preventDefault()
       timeout = setTimeout(() => {
-        clearTheTimeout(timeout)
+        timeout && clearTimeout(timeout)
+        timeout = null
         fn(e)
       }, 200)
     },
@@ -72,7 +85,7 @@ export function moveDirectionH5(element: HTMLElement, moveDirectionH5Fn: MoveDir
   let startX: number, startY: number, moveEndX: number, moveEndY: number, X: number, Y: number
   element.addEventListener(
     'touchstart',
-    function (e) {
+    (e) => {
       e.preventDefault()
       startX = e.targetTouches[0].pageX
       startY = e.targetTouches[0].pageY
@@ -81,7 +94,7 @@ export function moveDirectionH5(element: HTMLElement, moveDirectionH5Fn: MoveDir
   )
   element.addEventListener(
     'touchmove',
-    function (e) {
+    (e) => {
       e.preventDefault()
       moveEndX = e.targetTouches[0].pageX
       moveEndY = e.targetTouches[0].pageY
