@@ -1,7 +1,7 @@
 import { isMobile } from './is'
 import { clearTheTimeout } from './common'
 
-export function dbClick(element: HTMLElement, fn: (e?: any) => void) {
+export function dbClick(element: HTMLElement, fn: (e?: MouseEvent) => void) {
   let timeout: ReturnType<typeof setTimeout> | null
   const controller = new AbortController()
   const signal = controller.signal
@@ -29,7 +29,7 @@ export function dbClick(element: HTMLElement, fn: (e?: any) => void) {
   return { removeListener }
 }
 
-export function longPress(element: HTMLElement, fn: (e?: any) => void) {
+export function longPress(element: HTMLElement, fn: (e?: MouseEvent) => void) {
   let timeout: ReturnType<typeof setTimeout> | null
   const controller = new AbortController()
   const signal = controller.signal
@@ -50,6 +50,54 @@ export function longPress(element: HTMLElement, fn: (e?: any) => void) {
         clearTheTimeout(timeout)
         fn(e)
       }, 200)
+    },
+    { signal }
+  )
+  return { removeListener }
+}
+
+export interface MoveDirectionH5Fn {
+  toTop?: (e?: TouchEvent) => void
+  toRight?: (e?: TouchEvent) => void
+  toBottom?: (e?: TouchEvent) => void
+  toLeft?: (e?: TouchEvent) => void
+}
+export function moveDirectionH5(element: HTMLElement, moveDirectionH5Fn: MoveDirectionH5Fn) {
+  const { toTop, toRight, toBottom, toLeft } = moveDirectionH5Fn
+  const controller = new AbortController()
+  const signal = controller.signal
+  const removeListener = () => {
+    controller.abort()
+  }
+  let startX: number, startY: number, moveEndX: number, moveEndY: number, X: number, Y: number
+  element.addEventListener(
+    'touchstart',
+    function (e) {
+      e.preventDefault()
+      startX = e.targetTouches[0].pageX
+      startY = e.targetTouches[0].pageY
+    },
+    { signal }
+  )
+  element.addEventListener(
+    'touchmove',
+    function (e) {
+      e.preventDefault()
+      moveEndX = e.targetTouches[0].pageX
+      moveEndY = e.targetTouches[0].pageY
+      X = moveEndX - startX
+      Y = moveEndY - startY
+      if (Math.abs(X) > Math.abs(Y) && X > 0) {
+        toRight && toRight()
+      } else if (Math.abs(X) > Math.abs(Y) && X < 0) {
+        toLeft && toLeft()
+      } else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
+        toBottom && toBottom()
+      } else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
+        toTop && toTop()
+      } else {
+        console.log('滑了个寂寞')
+      }
     },
     { signal }
   )
