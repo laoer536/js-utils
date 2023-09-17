@@ -88,13 +88,13 @@ export function moveDirectionH5(element: HTMLElement, moveDirectionH5Fn: MoveDir
       X = moveEndX - startX
       Y = moveEndY - startY
       if (Math.abs(X) > Math.abs(Y) && X > 0) {
-        toRight && toRight()
+        toRight && toRight(e)
       } else if (Math.abs(X) > Math.abs(Y) && X < 0) {
-        toLeft && toLeft()
+        toLeft && toLeft(e)
       } else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
-        toBottom && toBottom()
+        toBottom && toBottom(e)
       } else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
-        toTop && toTop()
+        toTop && toTop(e)
       } else {
         console.log('滑了个寂寞')
       }
