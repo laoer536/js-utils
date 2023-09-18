@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.22](https://github.com/laoer536/js-utils/compare/v0.0.21...v0.0.22) (2023-09-18)
+
+
+### Features
+
+* analysisFilename ([b2d93ab](https://github.com/laoer536/js-utils/commit/b2d93abd4ef4834c0eb9352b52a29efa124c39b4))
+* behavior fns dbclick ([ef355eb](https://github.com/laoer536/js-utils/commit/ef355ebcfb1c2b1d716ed29ab5548c4e00f70ae8))
+* behavior fns longPress ([9de2400](https://github.com/laoer536/js-utils/commit/9de24008639366fb92c543e645a83b4818d84e1a))
+* behavior fns start ([ffc7bf9](https://github.com/laoer536/js-utils/commit/ffc7bf9f67827e14bea10ce27470d6f716c7c900))
+* clearThetimeout ([3ec3b09](https://github.com/laoer536/js-utils/commit/3ec3b09b29e54ecc8576a4a66dcc50f9bf951f1c))
+* moveDirectionH5 ([a2aac8a](https://github.com/laoer536/js-utils/commit/a2aac8afacb008680668e00704a57727e5b920d3))
+* moveDirectionH5 ([c50f774](https://github.com/laoer536/js-utils/commit/c50f7748fb33099e87020595addeb4eaa754bda0))
+* moveDirectionH5 ([d56f4f7](https://github.com/laoer536/js-utils/commit/d56f4f79be1e191e658534da3f0e82020fa95916))
+* moveDirectionH5 ([4a2deb1](https://github.com/laoer536/js-utils/commit/4a2deb1ddb6fdea101d125864f709e8081075ef7))
+
+
+### Bug Fixes
+
+* behavior.ts ([57256d6](https://github.com/laoer536/js-utils/commit/57256d6863b06be4735fe7da6c335bc09ee54dd6))
+* longPress ([8670365](https://github.com/laoer536/js-utils/commit/8670365a52c13f95db536f83794802a057640649))
+
 ### [0.0.21](https://github.com/laoer536/js-utils/compare/v0.0.20...v0.0.21) (2023-07-17)
 
 ### [0.0.20](https://github.com/laoer536/js-utils/compare/v0.0.19...v0.0.20) (2023-07-17)
