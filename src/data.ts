@@ -1,3 +1,4 @@
+import clonedeep from 'lodash.clonedeep'
 /**
  * @description 'For simple data, you use it is better.（Object who not includes object type data）'
  * @param target
@@ -8,30 +9,9 @@ export function deepCloneByStringfy<T extends object>(target: T): T {
 
 /**
  * @description 'For complicated data, you use it is better.（Object who includes object type data）'
- * @param obj
- * @param hash
  */
 
-export function deepClone(obj: Record<string | symbol, any>, hash = new WeakMap()) {
-  const isComplexDataType = (obj: Record<string | symbol, any>) =>
-    (typeof obj === 'object' || typeof obj === 'function') && obj !== null
-  if (obj.constructor === Date) {
-    return new Date(obj)
-  }
-  if (obj.constructor === RegExp) {
-    return new RegExp(obj)
-  }
-  if (hash.has(obj)) {
-    return hash.get(obj)
-  }
-  const allDesc = Object.getOwnPropertyDescriptors(obj)
-  const cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
-  hash.set(obj, cloneObj)
-  for (const key of Reflect.ownKeys(obj)) {
-    cloneObj[key] = isComplexDataType(obj[key]) && typeof obj[key] !== 'function' ? deepClone(obj[key], hash) : obj[key]
-  }
-  return cloneObj
-}
+export const deepClone = clonedeep
 
 export function jsonToObject<T>(target: string, defV: unknown): T | typeof defV {
   return target ? JSON.parse(target) : defV

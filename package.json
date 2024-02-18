@@ -75,6 +75,12 @@
     "vitest": "^0.27.2"
   },
   "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
     "scule": "^1.0.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "lodash.clonedeep@4.5.0": "patches/lodash.clonedeep@4.5.0.patch"
+    }
   }
 }

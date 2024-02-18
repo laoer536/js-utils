@@ -1,0 +1,22 @@
+diff --git a/index.d.ts b/index.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..85cd9953d10b89c5d4014c83abe0a23b5da70a66
+--- /dev/null
++++ b/index.d.ts
+@@ -0,0 +1,2 @@
++declare function cloneDeep<T=unknown>(obj:T):T
++export = cloneDeep
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index fb1d626d5c603983346a47abf466a12fdd6d81b3..81a6f58633ea1b0c5dea0e64390e3476ab314706 100644
+--- a/package.json
++++ b/package.json
+@@ -7,6 +7,8 @@
+   "license": "MIT",
+   "keywords": "lodash-modularized, clonedeep",
+   "author": "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
++  "main": "./index.js",
++  "types": "./index.d.ts",
+   "contributors": [
+     "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
+     "Blaine Bublitz <blaine.bublitz@gmail.com> (https://github.com/phated)",
