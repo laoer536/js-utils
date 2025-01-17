@@ -1,6 +1,9 @@
 # js-utils
 Add some useful utils to your project. No more 'ctrl C V'
 
+## sponsor
+[<img src="https://api.gitsponsors.com/api/badge/img?id=590725921" height="30">](https://api.gitsponsors.com/api/badge/link?p=KAKaunoETz0NvB+kexXnhwZEdOSBa5D1MDh96HK1/l35Wapk9XnYR7Qm0wKq+d32DeH98bksH+mXXvDqOD6MgWLBJlH6AYiaraKuFgEFwda4c+/XD+Sy+CQ0m+ablORI1ZyLVb6n6bZzIKT+V3WUWg==)
+
 ## Task completion
 
 - [x] isFns
